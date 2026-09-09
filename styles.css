@@ -66,7 +66,7 @@ main {
   bottom: max(24px, env(safe-area-inset-bottom));
   transform: translateX(-50%);
   width: min(980px, calc(100% - 56px));
-  color: #f2eee7;
+  color: #ECCDD9;
   pointer-events: none;
 }
 
@@ -81,7 +81,7 @@ main {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 18px;
-  border-bottom: 1px solid rgba(242, 238, 231, .8);
+  border-bottom: 1px solid rgba(236, 205, 217, .8);
 }
 
 .ask-book__form input {
@@ -89,14 +89,14 @@ main {
   border: 0;
   outline: 0;
   background: transparent;
-  color: #f2eee7;
+  color: #ECCDD9;
   padding: 8px 0 10px;
-  font-size: clamp(22px, 2.3vw, 36px);
+  font-size: clamp(11px, 1.15vw, 18px);
   line-height: 1;
 }
 
 .ask-book__form input::placeholder {
-  color: rgba(242, 238, 231, .64);
+  color: rgba(236, 205, 217, .64);
 }
 
 .ask-book__form button,
@@ -105,11 +105,11 @@ main {
 .ask-book__actions a {
   border: 0;
   background: transparent;
-  color: inherit;
+  color: #ECCDD9;
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 5.5px;
   line-height: 1;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -132,8 +132,8 @@ main {
   width: 100%;
   max-height: min(46svh, 430px);
   overflow-y: auto;
-  background: rgba(242, 238, 231, .96);
-  color: #151515;
+  background: transparent;
+  color: #ECCDD9;
   padding: 18px 20px 20px;
 }
 
@@ -141,7 +141,7 @@ main {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  font-size: 10px;
+  font-size: 5px;
   line-height: 1;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -149,14 +149,14 @@ main {
 
 .ask-book__question {
   margin: 26px 0 0;
-  font-size: clamp(20px, 2vw, 30px);
+  font-size: clamp(10px, 1vw, 15px);
   line-height: 1.05;
 }
 
 .ask-book__answer {
   margin: 18px 0 0;
   max-width: 760px;
-  font-size: clamp(16px, 1.55vw, 23px);
+  font-size: clamp(8px, .775vw, 11.5px);
   line-height: 1.22;
 }
 
@@ -186,12 +186,12 @@ main {
 
   .ask-book__form input {
     padding: 7px 0 9px;
-    font-size: clamp(19px, 6vw, 26px);
+    font-size: clamp(9.5px, 3vw, 13px);
   }
 
   .ask-book__form button {
     padding-bottom: 10px;
-    font-size: 10px;
+    font-size: 5px;
   }
 
   .ask-book__panel {
@@ -200,24 +200,24 @@ main {
   }
 
   .ask-book__meta {
-    font-size: 8px;
+    font-size: 4px;
     gap: 10px;
   }
 
   .ask-book__question {
     margin-top: 18px;
-    font-size: 19px;
+    font-size: 9.5px;
   }
 
   .ask-book__answer {
     margin-top: 12px;
-    font-size: 15px;
+    font-size: 7.5px;
     line-height: 1.24;
   }
 
   .ask-book__follow {
     margin-top: 16px;
-    font-size: 9px;
+    font-size: 4.5px;
   }
 
   .ask-book__actions {
@@ -227,7 +227,7 @@ main {
 
   .ask-book__actions button,
   .ask-book__actions a {
-    font-size: 9px;
+    font-size: 4.5px;
   }
 }
 
