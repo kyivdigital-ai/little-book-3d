@@ -15,15 +15,23 @@ body,
 #root,
 main {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
-  overflow: hidden;
 }
 
 html,
 body {
   background: #482A34;
   overscroll-behavior: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
 }
 
 .book-experience {
@@ -41,4 +49,210 @@ body {
   outline: none;
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.ask-book {
+  min-height: 100svh;
+  background: #f2eee7;
+  color: #151515;
+  padding: 34px 28px 48px;
+  display: flex;
+  align-items: stretch;
+}
+
+.ask-book__inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ask-book__eyebrow,
+.ask-book__meta,
+.ask-book__topics button,
+.ask-book__actions,
+.ask-book__follow,
+.ask-book__form button {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ask-book__eyebrow {
+  margin-bottom: 11vh;
+}
+
+.ask-book__title,
+.ask-book__question,
+.ask-book__answer {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+}
+
+.ask-book__title {
+  margin: 0;
+  max-width: 920px;
+  font-size: clamp(52px, 8.2vw, 124px);
+  line-height: .88;
+  letter-spacing: -.055em;
+}
+
+.ask-book__form {
+  margin-top: auto;
+  padding-top: 14vh;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-bottom: 1px solid #151515;
+}
+
+.ask-book__form input {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 14px 0;
+  font-size: clamp(24px, 3.1vw, 48px);
+  color: inherit;
+}
+
+.ask-book__form input::placeholder {
+  color: #77726c;
+}
+
+.ask-book__form button,
+.ask-book__topics button,
+.ask-book__follow,
+.ask-book__actions button,
+.ask-book__actions a {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ask-book__form button:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+.ask-book__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 16px;
+  padding-top: 18px;
+}
+
+.ask-book__topics button {
+  border-bottom: 1px solid transparent;
+}
+
+.ask-book__topics button:hover,
+.ask-book__follow:hover,
+.ask-book__actions button:hover,
+.ask-book__actions a:hover {
+  border-bottom-color: currentColor;
+}
+
+.ask-book__answer-wrap {
+  min-height: calc(100svh - 82px);
+  display: flex;
+  flex-direction: column;
+}
+
+.ask-book__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ask-book__question {
+  margin: 12vh 0 0;
+  max-width: 920px;
+  font-size: clamp(40px, 6vw, 92px);
+  line-height: .94;
+  letter-spacing: -.045em;
+}
+
+.ask-book__answer,
+.ask-book__loading {
+  margin: 8vh 0 0 auto;
+  width: min(760px, 72%);
+}
+
+.ask-book__answer {
+  font-size: clamp(28px, 3.6vw, 54px);
+  line-height: 1.02;
+  letter-spacing: -.025em;
+}
+
+.ask-book__loading {
+  font-size: 18px;
+}
+
+.ask-book__follow {
+  align-self: flex-end;
+  margin-top: 48px;
+  max-width: 760px;
+  text-align: left;
+  line-height: 1.35;
+  border-bottom: 1px solid currentColor;
+}
+
+.ask-book__actions {
+  margin-top: auto;
+  padding-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .ask-book {
+    padding: 22px 18px 28px;
+  }
+
+  .ask-book__eyebrow {
+    margin-bottom: 14vh;
+  }
+
+  .ask-book__title {
+    font-size: clamp(48px, 16vw, 76px);
+  }
+
+  .ask-book__form {
+    padding-top: 16vh;
+  }
+
+  .ask-book__form input {
+    font-size: 25px;
+  }
+
+  .ask-book__meta {
+    align-items: flex-start;
+  }
+
+  .ask-book__question {
+    margin-top: 10vh;
+    font-size: 44px;
+  }
+
+  .ask-book__answer,
+  .ask-book__loading {
+    width: 100%;
+    margin-top: 8vh;
+  }
+
+  .ask-book__answer {
+    font-size: 31px;
+  }
+
+  .ask-book__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
 }
