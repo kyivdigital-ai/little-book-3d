@@ -108,20 +108,23 @@ main {
 
 @media (max-width: 700px) {
   .ask-book {
-    width: calc(100% - 24px);
-    bottom: max(6px, env(safe-area-inset-bottom));
+    width: min(78vw, 300px);
+    bottom: max(8px, env(safe-area-inset-bottom));
   }
 
   .ask-book__form input {
-    padding: 4px 0 6px;
-    font-size: clamp(9.5px, 3vw, 13px);
+    padding: 3px 0 5px;
+    font-size: 8px;
+    text-align: center;
   }
 
   .ask-book__answer {
-    margin-bottom: 8px;
-    max-height: 18svh;
-    font-size: 7.5px;
-    line-height: 1.24;
+    margin: 0 auto 6px;
+    width: 100%;
+    max-height: 15svh;
+    font-size: 6.5px;
+    line-height: 1.22;
+    text-align: center;
   }
 }
 
@@ -131,6 +134,6 @@ main {
   }
 
   .ask-book__answer {
-    max-height: 15svh;
+    max-height: 13svh;
   }
 }
