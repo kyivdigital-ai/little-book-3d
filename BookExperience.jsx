@@ -58,8 +58,8 @@ function Book() {
 
   const isDesktop = viewport.width >= 5.2
   const baseScale = isDesktop
-    ? Math.min(0.78, viewport.width / 5.2)
-    : Math.min(0.86, viewport.width / 3.8)
+    ? Math.min(0.68, viewport.width / 5.9)
+    : Math.min(0.74, viewport.width / 4.2)
   const baseX = isDesktop ? -1.25 : 0
 
   const pageWidth = BOOK.width - BOOK.pageInset * 2
@@ -150,17 +150,17 @@ function Book() {
   useFrame((state, delta) => {
     if (!book.current) return
 
-const autoRotation = state.clock.getElapsedTime() * 0.12
-  
+    const autoRotation = state.clock.getElapsedTime() * 0.12
+
     const targetRotationX =
-  -pointer.current.y * 0.025 + drag.current.rotationX
+      -pointer.current.y * 0.025 + drag.current.rotationX
 
-const targetRotationY =
-  autoRotation +
-  pointer.current.x * 0.04 +
-  drag.current.rotationY
+    const targetRotationY =
+      autoRotation +
+      pointer.current.x * 0.04 +
+      drag.current.rotationY
 
-const targetRotationZ = 0
+    const targetRotationZ = 0
 
     book.current.rotation.x = THREE.MathUtils.damp(
       book.current.rotation.x,
