@@ -63,7 +63,7 @@ main {
   position: absolute;
   z-index: 10;
   left: 50%;
-  bottom: max(24px, env(safe-area-inset-bottom));
+  bottom: max(8px, env(safe-area-inset-bottom));
   transform: translateX(-50%);
   width: min(980px, calc(100% - 56px));
   color: #ECCDD9;
@@ -71,26 +71,23 @@ main {
 }
 
 .ask-book__form,
-.ask-book__panel {
+.ask-book__answer {
   pointer-events: auto;
 }
 
 .ask-book__form {
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 18px;
   border-bottom: 1px solid rgba(236, 205, 217, .8);
 }
 
 .ask-book__form input {
+  width: 100%;
   min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
   color: #ECCDD9;
-  padding: 8px 0 10px;
+  padding: 5px 0 7px;
   font-size: clamp(11px, 1.15vw, 18px);
   line-height: 1;
 }
@@ -99,144 +96,41 @@ main {
   color: rgba(236, 205, 217, .64);
 }
 
-.ask-book__form button,
-.ask-book__follow,
-.ask-book__actions button,
-.ask-book__actions a {
-  border: 0;
-  background: transparent;
-  color: #ECCDD9;
-  padding: 0;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 5.5px;
-  line-height: 1;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.ask-book__form button {
-  padding-bottom: 12px;
-}
-
-.ask-book__form button:disabled {
-  opacity: .3;
-  cursor: default;
-}
-
-.ask-book--open {
-  bottom: max(18px, env(safe-area-inset-bottom));
-}
-
-.ask-book__panel {
-  width: 100%;
-  max-height: min(46svh, 430px);
-  overflow-y: auto;
-  background: transparent;
-  color: #ECCDD9;
-  padding: 18px 20px 20px;
-}
-
-.ask-book__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 5px;
-  line-height: 1;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.ask-book__question {
-  margin: 26px 0 0;
-  font-size: clamp(10px, 1vw, 15px);
-  line-height: 1.05;
-}
-
 .ask-book__answer {
-  margin: 18px 0 0;
-  max-width: 760px;
+  margin: 0 0 10px;
+  width: min(620px, 100%);
+  max-height: 22svh;
+  overflow-y: auto;
+  color: #ECCDD9;
   font-size: clamp(8px, .775vw, 11.5px);
-  line-height: 1.22;
-}
-
-.ask-book__follow {
-  margin-top: 20px;
-  line-height: 1.35;
-  text-align: left;
-  border-bottom: 1px solid currentColor;
-}
-
-.ask-book__actions {
-  margin-top: 28px;
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
+  line-height: 1.25;
 }
 
 @media (max-width: 700px) {
   .ask-book {
-    width: calc(100% - 28px);
-    bottom: max(14px, env(safe-area-inset-bottom));
-  }
-
-  .ask-book__form {
-    gap: 12px;
+    width: calc(100% - 24px);
+    bottom: max(6px, env(safe-area-inset-bottom));
   }
 
   .ask-book__form input {
-    padding: 7px 0 9px;
+    padding: 4px 0 6px;
     font-size: clamp(9.5px, 3vw, 13px);
   }
 
-  .ask-book__form button {
-    padding-bottom: 10px;
-    font-size: 5px;
-  }
-
-  .ask-book__panel {
-    max-height: 42svh;
-    padding: 14px 14px 16px;
-  }
-
-  .ask-book__meta {
-    font-size: 4px;
-    gap: 10px;
-  }
-
-  .ask-book__question {
-    margin-top: 18px;
-    font-size: 9.5px;
-  }
-
   .ask-book__answer {
-    margin-top: 12px;
+    margin-bottom: 8px;
+    max-height: 18svh;
     font-size: 7.5px;
     line-height: 1.24;
-  }
-
-  .ask-book__follow {
-    margin-top: 16px;
-    font-size: 4.5px;
-  }
-
-  .ask-book__actions {
-    margin-top: 20px;
-    gap: 16px;
-  }
-
-  .ask-book__actions button,
-  .ask-book__actions a {
-    font-size: 4.5px;
   }
 }
 
 @media (max-height: 640px) {
   .ask-book {
-    bottom: max(10px, env(safe-area-inset-bottom));
+    bottom: max(4px, env(safe-area-inset-bottom));
   }
 
-  .ask-book__panel {
-    max-height: 38svh;
+  .ask-book__answer {
+    max-height: 15svh;
   }
 }
