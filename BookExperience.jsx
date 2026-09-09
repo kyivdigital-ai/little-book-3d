@@ -59,8 +59,9 @@ function Book() {
   const isDesktop = viewport.width >= 5.2
   const baseScale = isDesktop
     ? Math.min(0.68, viewport.width / 5.9)
-    : Math.min(0.74, viewport.width / 4.2)
+    : Math.min(0.62, viewport.width / 4.7)
   const baseX = isDesktop ? -1.25 : 0
+  const baseY = isDesktop ? 0 : 0.12
 
   const pageWidth = BOOK.width - BOOK.pageInset * 2
   const pageHeight = BOOK.height - BOOK.pageInset * 2
@@ -82,7 +83,6 @@ function Book() {
       metalness: 0,
     })
 
-    // BoxGeometry order: right, left, top, bottom, front, back.
     return [edge, edge, edge, edge, paper, paper]
   }, [pageEdge])
 
@@ -151,35 +151,13 @@ function Book() {
     if (!book.current) return
 
     const autoRotation = state.clock.getElapsedTime() * 0.12
-
-    const targetRotationX =
-      -pointer.current.y * 0.025 + drag.current.rotationX
-
-    const targetRotationY =
-      autoRotation +
-      pointer.current.x * 0.04 +
-      drag.current.rotationY
-
+    const targetRotationX = -pointer.current.y * 0.025 + drag.current.rotationX
+    const targetRotationY = autoRotation + pointer.current.x * 0.04 + drag.current.rotationY
     const targetRotationZ = 0
 
-    book.current.rotation.x = THREE.MathUtils.damp(
-      book.current.rotation.x,
-      targetRotationX,
-      7,
-      delta,
-    )
-    book.current.rotation.y = THREE.MathUtils.damp(
-      book.current.rotation.y,
-      targetRotationY,
-      7,
-      delta,
-    )
-    book.current.rotation.z = THREE.MathUtils.damp(
-      book.current.rotation.z,
-      targetRotationZ,
-      7,
-      delta,
-    )
+    book.current.rotation.x = THREE.MathUtils.damp(book.current.rotation.x, targetRotationX, 7, delta)
+    book.current.rotation.y = THREE.MathUtils.damp(book.current.rotation.y, targetRotationY, 7, delta)
+    book.current.rotation.z = THREE.MathUtils.damp(book.current.rotation.z, targetRotationZ, 7, delta)
 
     book.current.position.x = THREE.MathUtils.damp(
       book.current.position.x,
@@ -189,7 +167,7 @@ function Book() {
     )
     book.current.position.y = THREE.MathUtils.damp(
       book.current.position.y,
-      -pointer.current.y * 0.018,
+      baseY - pointer.current.y * 0.018,
       7,
       delta,
     )
@@ -206,16 +184,14 @@ function Book() {
   return (
     <group
       ref={book}
-      position={[baseX, 0, 0]}
+      position={[baseX, baseY, 0]}
       rotation={[0, 0, 0]}
       scale={baseScale}
       onPointerDown={startDrag}
       onPointerOver={(event) => {
         event.stopPropagation()
         hovered.current = true
-        document.body.style.cursor = drag.current.active
-          ? 'grabbing'
-          : 'grab'
+        document.body.style.cursor = drag.current.active ? 'grabbing' : 'grab'
       }}
       onPointerOut={() => {
         hovered.current = false
@@ -227,44 +203,18 @@ function Book() {
       </mesh>
 
       <mesh position={[0, 0, frontZ]} castShadow receiveShadow>
-        <boxGeometry
-          args={[coverWidth, coverHeight, BOOK.coverThickness]}
-        />
-        <meshPhysicalMaterial
-          {...coverBaseMaterial}
-          bumpMap={grain}
-          color="#eccdd8"
-        />
+        <boxGeometry args={[coverWidth, coverHeight, BOOK.coverThickness]} />
+        <meshPhysicalMaterial {...coverBaseMaterial} bumpMap={grain} color="#eccdd8" />
       </mesh>
 
       <mesh position={[0, 0, -frontZ]} castShadow receiveShadow>
-        <boxGeometry
-          args={[coverWidth, coverHeight, BOOK.coverThickness]}
-        />
-        <meshPhysicalMaterial
-          {...coverBaseMaterial}
-          bumpMap={grain}
-          color="#eccdd8"
-        />
+        <boxGeometry args={[coverWidth, coverHeight, BOOK.coverThickness]} />
+        <meshPhysicalMaterial {...coverBaseMaterial} bumpMap={grain} color="#eccdd8" />
       </mesh>
 
-      <mesh
-        position={[-coverWidth / 2, 0, 0]}
-        castShadow
-        receiveShadow
-      >
-        <boxGeometry
-          args={[
-            BOOK.coverThickness,
-            coverHeight,
-            BOOK.depth + BOOK.coverThickness,
-          ]}
-        />
-        <meshPhysicalMaterial
-          {...coverBaseMaterial}
-          bumpMap={grain}
-          color="#eccdd8"
-        />
+      <mesh position={[-coverWidth / 2, 0, 0]} castShadow receiveShadow>
+        <boxGeometry args={[BOOK.coverThickness, coverHeight, BOOK.depth + BOOK.coverThickness]} />
+        <meshPhysicalMaterial {...coverBaseMaterial} bumpMap={grain} color="#eccdd8" />
       </mesh>
 
       <mesh position={[0, 0, frontZ + BOOK.coverThickness / 2 + 0.002]}>
@@ -281,19 +231,10 @@ function Book() {
       </mesh>
 
       <mesh
-        position={[
-          -coverWidth / 2 - BOOK.coverThickness / 2 - 0.002,
-          0,
-          0,
-        ]}
+        position={[-coverWidth / 2 - BOOK.coverThickness / 2 - 0.002, 0, 0]}
         rotation={[0, -Math.PI / 2, 0]}
       >
-        <planeGeometry
-          args={[
-            BOOK.depth + BOOK.coverThickness - 0.01,
-            coverHeight - 0.02,
-          ]}
-        />
+        <planeGeometry args={[BOOK.depth + BOOK.coverThickness - 0.01, coverHeight - 0.02]} />
         <meshBasicMaterial map={spine} toneMapped={false} />
       </mesh>
     </group>
@@ -321,21 +262,13 @@ function Scene() {
         shadow-bias={-0.00012}
       />
 
-      <directionalLight
-        position={[-4, 1, -3]}
-        intensity={0.9}
-        color="#e8d7ff"
-      />
+      <directionalLight position={[-4, 1, -3]} intensity={0.9} color="#e8d7ff" />
 
       <Suspense fallback={null}>
         <Book />
       </Suspense>
 
-      <mesh
-        position={[-0.55, -2.18, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        receiveShadow
-      >
+      <mesh position={[-0.55, -2.18, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[16, 16]} />
         <shadowMaterial transparent opacity={0.18} />
       </mesh>
