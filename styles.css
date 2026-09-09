@@ -1,7 +1,7 @@
 :root {
   background: #482A34;
   color: #482A34;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Courier 10 Pitch BT', 'Courier New', Courier, monospace;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -87,7 +87,7 @@ input {
 .ask-book__title,
 .ask-book__question,
 .ask-book__answer {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Courier 10 Pitch BT', 'Courier New', Courier, monospace;
   font-weight: 400;
 }
 
