@@ -60,7 +60,7 @@ function Book() {
   const baseScale = isDesktop
     ? Math.min(0.68, viewport.width / 5.9)
     : Math.min(0.62, viewport.width / 4.7)
-  const baseX = isDesktop ? -1.25 : 0
+  const baseX = isDesktop ? -0.85 : 0
   const baseY = isDesktop ? 0 : 0.12
 
   const pageWidth = BOOK.width - BOOK.pageInset * 2
