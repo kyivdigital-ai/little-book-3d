@@ -60,6 +60,14 @@ export default function AskLittleBook() {
           placeholder="Ask me about book"
           maxLength={600}
         />
+        <button
+          className="ask-book__submit"
+          type="submit"
+          disabled={loading || !question.trim()}
+          aria-label="Send question"
+        >
+          ENTER ↵
+        </button>
       </form>
     </section>
   )
