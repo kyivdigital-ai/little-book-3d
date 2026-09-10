@@ -77,10 +77,14 @@ main {
 
 .ask-book__form {
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   border-bottom: 1px solid rgba(236, 205, 217, .8);
 }
 
 .ask-book__form input {
+  flex: 1 1 auto;
   width: 100%;
   min-width: 0;
   border: 0;
@@ -90,10 +94,35 @@ main {
   padding: 5px 0 7px;
   font-size: clamp(11px, 1.15vw, 18px);
   line-height: 1;
+  text-align: left;
 }
 
 .ask-book__form input::placeholder {
   color: rgba(236, 205, 217, .64);
+}
+
+.ask-book__submit {
+  flex: 0 0 auto;
+  margin: 0 0 5px;
+  padding: 4px 7px 3px;
+  border: 1px solid rgba(236, 205, 217, .72);
+  background: transparent;
+  color: #ECCDD9;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: .06em;
+  cursor: pointer;
+}
+
+.ask-book__submit:hover:not(:disabled),
+.ask-book__submit:focus-visible:not(:disabled) {
+  background: #ECCDD9;
+  color: #482A34;
+}
+
+.ask-book__submit:disabled {
+  opacity: .35;
+  cursor: default;
 }
 
 .ask-book__answer {
@@ -114,10 +143,20 @@ main {
     bottom: max(8px, env(safe-area-inset-bottom));
   }
 
+  .ask-book__form {
+    gap: 8px;
+  }
+
   .ask-book__form input {
     padding: 3px 0 5px;
     font-size: 8px;
-    text-align: center;
+    text-align: left;
+  }
+
+  .ask-book__submit {
+    margin-bottom: 3px;
+    padding: 3px 5px 2px;
+    font-size: 6.5px;
   }
 
   .ask-book__answer {
