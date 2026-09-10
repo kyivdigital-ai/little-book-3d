@@ -62,10 +62,10 @@ main {
 .ask-book {
   position: absolute;
   z-index: 10;
-  left: 50%;
-  bottom: max(8px, env(safe-area-inset-bottom));
-  transform: translateX(-50%);
-  width: min(980px, calc(100% - 56px));
+  left: 22%;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  transform: none;
+  width: min(520px, 38vw);
   color: #ECCDD9;
   pointer-events: none;
 }
@@ -98,7 +98,7 @@ main {
 
 .ask-book__answer {
   margin: 0 0 10px;
-  width: min(620px, 100%);
+  width: min(520px, 100%);
   max-height: 22svh;
   overflow-y: auto;
   color: #ECCDD9;
@@ -108,6 +108,8 @@ main {
 
 @media (max-width: 700px) {
   .ask-book {
+    left: 50%;
+    transform: translateX(-50%);
     width: min(78vw, 300px);
     bottom: max(8px, env(safe-area-inset-bottom));
   }
